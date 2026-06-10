@@ -1,0 +1,287 @@
+/*
+ * ------------------------------------------------------------
+ * IMPORTANT: The contents of this file are auto-generated.
+ *
+ * This file may be updated by the Shopify admin theme editor
+ * or related systems. Please exercise caution as any changes
+ * made to this file may be overwritten.
+ * ------------------------------------------------------------
+ */
+{
+  "sections": {
+    "slideshow": {
+      "type": "slideshow",
+      "blocks": {
+        "slide-0": {
+          "type": "slide",
+          "settings": {
+            "image": "shopify://shop_images/Llumi-home-page-hero-electrolyte-01.png",
+            "image_overlay_opacity": 10,
+            "heading": "Hydrate, Restore, Glow",
+            "heading_size": "h1",
+            "subheading": "Radiance is a daily ritual. Feel it from the inside out.",
+            "button_label": "SHOP NOW",
+            "link": "shopify://collections/all",
+            "button_style_secondary": false,
+            "show_text_box": true,
+            "box_align": "middle-left",
+            "text_alignment": "left",
+            "text_alignment_mobile": "left",
+            "color_scheme": "scheme-1"
+          }
+        }
+      },
+      "block_order": [
+        "slide-0"
+      ],
+      "settings": {
+        "layout": "full_bleed",
+        "slide_height": "adapt_image",
+        "slider_visual": "counter",
+        "auto_rotate": false,
+        "change_slides_speed": 5,
+        "image_behavior": "none",
+        "show_text_below": true,
+        "accessibility_info": "Slideshow about our brand"
+      }
+    },
+    "featured-collection-0": {
+      "type": "featured-collection",
+      "settings": {
+        "collection": "all",
+        "products_to_show": 4,
+        "title": "Featured products",
+        "heading_size": "h2",
+        "description": "",
+        "show_description": false,
+        "description_style": "body",
+        "columns_desktop": 4,
+        "enable_desktop_slider": false,
+        "full_width": false,
+        "show_view_all": false,
+        "view_all_style": "solid",
+        "color_scheme": "scheme-1",
+        "image_ratio": "portrait",
+        "image_shape": "default",
+        "show_secondary_image": false,
+        "show_vendor": false,
+        "show_rating": false,
+        "quick_add": "standard",
+        "columns_mobile": "2",
+        "swipe_on_mobile": false,
+        "padding_top": 60,
+        "padding_bottom": 60
+      }
+    },
+    "image_with_text_7Q84id": {
+      "type": "image-with-text",
+      "blocks": {
+        "heading_ebhJVe": {
+          "type": "heading",
+          "settings": {
+            "heading": "Your daily glow, simplified.",
+            "heading_size": "h1"
+          }
+        },
+        "text_mht3rL": {
+          "type": "text",
+          "settings": {
+            "text": "<p><br/>Wellness shouldn't feel like a chore or a supplement aisle. Lumi is a small daily ritual, clean ingredients, beautiful to use, made to fit the life you already have. No jargon. No overwhelm. Just glow.<br/><br/></p>",
+            "text_style": "body"
+          }
+        },
+        "button_KAqBAM": {
+          "type": "button",
+          "settings": {
+            "button_label": "Our Story",
+            "button_link": "",
+            "button_style_secondary": false
+          }
+        }
+      },
+      "block_order": [
+        "heading_ebhJVe",
+        "text_mht3rL",
+        "button_KAqBAM"
+      ],
+      "name": "t:sections.image-with-text.presets.name",
+      "settings": {
+        "image": "shopify://shop_images/Woman_holding_electrolyte_supple__202606100907.jpg",
+        "height": "adapt",
+        "desktop_image_width": "medium",
+        "layout": "image_first",
+        "image_behavior": "none",
+        "content_layout": "overlap",
+        "desktop_content_position": "top",
+        "desktop_content_alignment": "left",
+        "mobile_content_alignment": "left",
+        "section_color_scheme": "scheme-1",
+        "color_scheme": "scheme-4",
+        "padding_top": 36,
+        "padding_bottom": 36
+      }
+    },
+    "image_with_text_EbRpJK": {
+      "type": "image-with-text",
+      "blocks": {
+        "heading_6JxXya": {
+          "type": "heading",
+          "settings": {
+            "heading": "Your daily glow, simplified.",
+            "heading_size": "h1"
+          }
+        },
+        "text_ktUKW7": {
+          "type": "text",
+          "settings": {
+            "text": "<p><br/>Wellness shouldn't feel like a chore or a supplement aisle. Lumi is a small daily ritual, clean ingredients, beautiful to use, made to fit the life you already have. No jargon. No overwhelm. Just glow.<br/><br/></p>",
+            "text_style": "body"
+          }
+        },
+        "button_axaGc4": {
+          "type": "button",
+          "settings": {
+            "button_label": "Our Story",
+            "button_link": "",
+            "button_style_secondary": false
+          }
+        }
+      },
+      "block_order": [
+        "heading_6JxXya",
+        "text_ktUKW7",
+        "button_axaGc4"
+      ],
+      "name": "t:sections.image-with-text.presets.name",
+      "settings": {
+        "image": "shopify://shop_images/Woman_holding_electrolyte_supple__202606100907.jpg",
+        "height": "adapt",
+        "desktop_image_width": "medium",
+        "layout": "text_first",
+        "image_behavior": "none",
+        "content_layout": "overlap",
+        "desktop_content_position": "top",
+        "desktop_content_alignment": "left",
+        "mobile_content_alignment": "left",
+        "section_color_scheme": "scheme-1",
+        "color_scheme": "scheme-4",
+        "padding_top": 36,
+        "padding_bottom": 36
+      }
+    },
+    "multicolumn_Eia6Y4": {
+      "type": "multicolumn",
+      "blocks": {
+        "column_VCwAbt": {
+          "type": "column",
+          "settings": {
+            "title": "Clean ingredients",
+            "text": "<p><br/>Nothing you can't pronounce.<br/><br/></p>",
+            "link_label": "",
+            "link": ""
+          }
+        },
+        "column_Lm4XHi": {
+          "type": "column",
+          "settings": {
+            "title": "A ritual, not  regimen",
+            "text": "<p><br/>One simple step, every day.<br/><br/></p>",
+            "link_label": "",
+            "link": ""
+          }
+        },
+        "column_Cc4w9t": {
+          "type": "column",
+          "settings": {
+            "title": "Inside-out results",
+            "text": "<p><br/>Skin, energy, hydration.<br/><br/></p>",
+            "link_label": "",
+            "link": ""
+          }
+        },
+        "column_NdUxKL": {
+          "type": "column",
+          "settings": {
+            "title": "Made for daily",
+            "text": "<p><br/>Designed to keep using.<br/><br/></p>",
+            "link_label": "",
+            "link": ""
+          }
+        }
+      },
+      "block_order": [
+        "column_VCwAbt",
+        "column_Lm4XHi",
+        "column_Cc4w9t",
+        "column_NdUxKL"
+      ],
+      "name": "t:sections.multicolumn.presets.name",
+      "settings": {
+        "title": "Benefits",
+        "heading_size": "h1",
+        "image_width": "full",
+        "image_ratio": "adapt",
+        "button_label": "Button label",
+        "button_link": "",
+        "columns_desktop": 4,
+        "column_alignment": "left",
+        "background_style": "primary",
+        "color_scheme": "scheme-1",
+        "columns_mobile": "2",
+        "swipe_on_mobile": false,
+        "padding_top": 36,
+        "padding_bottom": 36
+      }
+    },
+    "178111175061d43c49": {
+      "type": "apps",
+      "blocks": {
+        "judge_me_reviews_cards_carousel_8AkYbP": {
+          "type": "shopify://apps/judge-me-reviews/blocks/cards_carousel/61ccd3b1-a9f2-4160-9fe9-4fec8413e5d8",
+          "settings": {
+            "show_sample_reviews": true,
+            "reviews_selection": "all",
+            "products": [],
+            "star_rating": "all",
+            "show_review_media": true,
+            "display_order": "media_first",
+            "no_image_fallback": "review_text_only",
+            "max_reviews": 20,
+            "review_length": "medium",
+            "text_size": "medium",
+            "image_ratio": "1",
+            "reviews_shown": 4,
+            "show_reviewer_name": true,
+            "show_product_name": true,
+            "hide_arrows_mobile": true,
+            "arrows_position": "sides",
+            "max_width": 1100,
+            "corner_styling": "soft",
+            "header_text_color": "#000000",
+            "text_color": "#000000",
+            "card_color": "#f9f9f9",
+            "stars_color": "",
+            "arrows_color": "#000000",
+            "transition_speed": 5,
+            "header_text": "Customers are saying",
+            "show_average_rating": true
+          }
+        }
+      },
+      "block_order": [
+        "judge_me_reviews_cards_carousel_8AkYbP"
+      ],
+      "settings": {
+        "include_margins": true
+      }
+    }
+  },
+  "order": [
+    "slideshow",
+    "featured-collection-0",
+    "image_with_text_7Q84id",
+    "image_with_text_EbRpJK",
+    "multicolumn_Eia6Y4",
+    "178111175061d43c49"
+  ]
+}
