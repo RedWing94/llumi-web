@@ -1,0 +1,135 @@
+{%- comment -%}
+  Lumi branded collapsible accordions for product metafields.
+  Pulls from: product.metafields.custom.ingredients,
+              product.metafields.custom.how_to_use,
+              product.metafields.custom.warnings
+  Each row is hidden when its metafield is blank.
+{%- endcomment -%}
+
+<style>
+  .lumi-collapsibles {
+    margin-top: 2rem;
+    border-top: 1px solid #E4D6D2;
+  }
+
+  .lumi-collapsibles details {
+    border-bottom: 1px solid #E4D6D2;
+  }
+
+  .lumi-collapsibles summary {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 1.25rem 0;
+    cursor: pointer;
+    list-style: none;
+    font-family: 'DM Sans', sans-serif;
+    font-size: 3rem;
+    font-weight: 500;
+    color: #1A1A1A;
+    letter-spacing: 0.02em;
+  }
+
+  .lumi-collapsibles summary::-webkit-details-marker {
+    display: none;
+  }
+
+  .lumi-collapsibles summary::marker {
+    display: none;
+    content: '';
+  }
+
+  .lumi-collapsibles .lumi-collapsible__icon {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    width: 1.25rem;
+    height: 1.25rem;
+    flex-shrink: 0;
+    color: #B8827A;
+    font-size: 1.25rem;
+    line-height: 1;
+    transition: transform 0.25s ease;
+  }
+
+  .lumi-collapsibles details[open] .lumi-collapsible__icon {
+    transform: rotate(45deg);
+  }
+
+  .lumi-collapsibles .lumi-collapsible__content {
+    padding: 0 0 1.25rem;
+    font-family: 'DM Sans', sans-serif;
+    font-size: 1.6rem;
+    line-height: 1.7;
+    color: #1A1A1A;
+  }
+
+  .lumi-collapsibles .lumi-collapsible__content ul,
+  .lumi-collapsibles .lumi-collapsible__content ol {
+    padding-left: 1.25rem;
+    margin: 0.5rem 0;
+  }
+
+  .lumi-collapsibles .lumi-collapsible__content p {
+    margin: 0 0 0.5rem;
+  }
+
+  .lumi-fda-disclaimer {
+    margin-top: 1.5rem;
+    padding: 1rem 0;
+    font-family: 'DM Sans', sans-serif;
+    font-size: 0.875rem;
+    line-height: 1.6;
+    color: #7A4A44;
+    font-style: italic;
+  }
+</style>
+
+{%- assign has_any = false -%}
+{%- if product.metafields.custom.ingredients != blank %}{% assign has_any = true %}{% endif -%}
+{%- if product.metafields.custom.how_to_use != blank %}{% assign has_any = true %}{% endif -%}
+{%- if product.metafields.custom.warnings != blank %}{% assign has_any = true %}{% endif -%}
+
+{%- if has_any -%}
+  <div class="lumi-collapsibles">
+    {%- if product.metafields.custom.ingredients != blank -%}
+      <details>
+        <summary>
+          <span>Ingredients</span>
+          <span class="lumi-collapsible__icon">+</span>
+        </summary>
+        <div class="lumi-collapsible__content rte">
+          {{ product.metafields.custom.ingredients | metafield_tag }}
+        </div>
+      </details>
+    {%- endif -%}
+
+    {%- if product.metafields.custom.how_to_use != blank -%}
+      <details>
+        <summary>
+          <span>How to Use</span>
+          <span class="lumi-collapsible__icon">+</span>
+        </summary>
+        <div class="lumi-collapsible__content rte">
+          {{ product.metafields.custom.how_to_use | metafield_tag }}
+        </div>
+      </details>
+    {%- endif -%}
+
+    {%- if product.metafields.custom.warnings != blank -%}
+      <details>
+        <summary>
+          <span>Warnings</span>
+          <span class="lumi-collapsible__icon">+</span>
+        </summary>
+        <div class="lumi-collapsible__content rte">
+          {{ product.metafields.custom.warnings | metafield_tag }}
+        </div>
+      </details>
+    {%- endif -%}
+  </div>
+{%- endif -%}
+
+<div class="lumi-fda-disclaimer">
+  These statements have not been evaluated by the Food and Drug Administration. This product is not intended to diagnose, treat, cure, or prevent any disease.
+</div>

@@ -1,0 +1,84 @@
+{%- comment -%}
+  Lumi "Choose your flavor" cross-link for Hydrate products.
+  Only renders when the current product has the "hydrate" tag.
+  Dynamically loops all products sharing the "hydrate" tag
+  in the same collection, highlighting the current one.
+{%- endcomment -%}
+
+{%- if product.tags contains 'Hydration' -%}
+
+<style>
+  .lumi-flavor-picker {
+    margin-top: 1rem;
+    margin-bottom: 0.5rem;
+  }
+
+  .lumi-flavor-picker__label {
+    display: block;
+    font-family: 'DM Sans', sans-serif;
+    font-size: 1.3rem;
+    font-weight: 500;
+    color: #1A1A1A;
+    letter-spacing: 0.04em;
+    text-transform: uppercase;
+    margin-bottom: 0.625rem;
+  }
+
+  .lumi-flavor-picker__options {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.5rem;
+  }
+
+  .lumi-flavor-picker__pill {
+    display: inline-block;
+    padding: 0.5rem 1.125rem;
+    border-radius: 999px;
+    background: #F5ECEA;
+    border: 1.5px solid #E4D6D2;
+    font-family: 'DM Sans', sans-serif;
+    font-size: 1.4rem;
+    color: #1A1A1A;
+    text-decoration: none;
+    transition: border-color 0.2s ease, background 0.2s ease;
+    cursor: pointer;
+  }
+
+  .lumi-flavor-picker__pill:hover {
+    border-color: #B8827A;
+  }
+
+  .lumi-flavor-picker__pill--active {
+    border-color: #B8827A;
+    background: #F5ECEA;
+    font-weight: 600;
+    pointer-events: none;
+  }
+</style>
+
+<div class="lumi-flavor-picker">
+  <span class="lumi-flavor-picker__label">Choose your flavor</span>
+  <div class="lumi-flavor-picker__options">
+    {%- for col_product in collections.all.products -%}
+      {%- if col_product.tags contains 'Hydration' -%}
+        {%- assign is_current = false -%}
+        {%- if col_product.handle == product.handle -%}
+          {%- assign is_current = true -%}
+        {%- endif -%}
+
+        {%- comment -%} Strip brand prefix to get just the flavor name {%- endcomment -%}
+        {%- assign flavor_name = col_product.title | remove: 'Llumi Hydrate ' | remove: 'Lumi Hydrate ' | remove: 'LLUMI Hydrate ' | remove: '(' | remove: ')' | strip -%}
+
+        <a
+          href="{{ col_product.url }}"
+          class="lumi-flavor-picker__pill{% if is_current %} lumi-flavor-picker__pill--active{% endif %}"
+          {% if is_current %}aria-current="true"{% endif %}
+        >
+          {{- flavor_name -}}
+        </a>
+      {%- endif -%}
+    {%- endfor -%}
+  </div>
+</div>
+
+{%- endif -%}

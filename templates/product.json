@@ -35,6 +35,12 @@
           "type": "price",
           "settings": {}
         },
+        "lumi_flavor_picker": {
+          "type": "custom_liquid",
+          "settings": {
+            "custom_liquid": "{% render 'lumi-flavor-picker' %}"
+          }
+        },
         "variant_picker": {
           "type": "variant_picker",
           "settings": {
@@ -57,6 +63,12 @@
           "type": "description",
           "settings": {}
         },
+        "lumi_collapsibles": {
+          "type": "custom_liquid",
+          "settings": {
+            "custom_liquid": "{% render 'lumi-collapsibles' %}"
+          }
+        },
         "share": {
           "type": "share",
           "settings": {
@@ -70,10 +82,12 @@
         "judge_me_reviews_preview_badge_jCxAgH",
         "rating",
         "price",
+        "lumi_flavor_picker",
         "variant_picker",
         "quantity_selector",
         "buy_buttons",
         "description",
+        "lumi_collapsibles",
         "share"
       ],
       "settings": {
