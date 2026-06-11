@@ -1,0 +1,127 @@
+{
+  "sections": {
+    "hero": {
+      "type": "image-banner",
+      "blocks": {
+        "hero_heading": {
+          "type": "heading",
+          "settings": {
+            "heading": "Our Story",
+            "heading_size": "h0"
+          }
+        },
+        "hero_text": {
+          "type": "text",
+          "settings": {
+            "text": "Clean wellness, crafted with intention.",
+            "text_style": "subtitle"
+          }
+        }
+      },
+      "block_order": [
+        "hero_heading",
+        "hero_text"
+      ],
+      "settings": {
+        "image_overlay_opacity": 40,
+        "image_height": "medium",
+        "desktop_content_position": "middle-center",
+        "show_text_box": false,
+        "desktop_content_alignment": "center",
+        "color_scheme": "scheme-1",
+        "image_behavior": "none",
+        "mobile_content_alignment": "center",
+        "stack_images_on_mobile": false,
+        "show_text_below": false
+      }
+    },
+    "story": {
+      "type": "rich-text",
+      "blocks": {
+        "story_heading": {
+          "type": "heading",
+          "settings": {
+            "heading": "Why Llumi?",
+            "heading_size": "h1"
+          }
+        },
+        "story_text": {
+          "type": "text",
+          "settings": {
+            "text": "<p>Replace this with your brand story. Talk about what inspired Llumi, the daily rituals you believe in, and why clean ingredients matter.</p>"
+          }
+        }
+      },
+      "block_order": [
+        "story_heading",
+        "story_text"
+      ],
+      "settings": {
+        "desktop_content_position": "center",
+        "content_alignment": "center",
+        "color_scheme": "",
+        "full_width": false,
+        "padding_top": 60,
+        "padding_bottom": 40
+      }
+    },
+    "mission": {
+      "type": "multicolumn",
+      "blocks": {
+        "value_1": {
+          "type": "column",
+          "settings": {
+            "title": "Clean Ingredients",
+            "text": "<p>Replace with your first value or pillar.</p>",
+            "link_label": "",
+            "link": ""
+          }
+        },
+        "value_2": {
+          "type": "column",
+          "settings": {
+            "title": "Daily Rituals",
+            "text": "<p>Replace with your second value or pillar.</p>",
+            "link_label": "",
+            "link": ""
+          }
+        },
+        "value_3": {
+          "type": "column",
+          "settings": {
+            "title": "Restore & Glow",
+            "text": "<p>Replace with your third value or pillar.</p>",
+            "link_label": "",
+            "link": ""
+          }
+        }
+      },
+      "block_order": [
+        "value_1",
+        "value_2",
+        "value_3"
+      ],
+      "settings": {
+        "title": "What We Believe",
+        "heading_size": "h1",
+        "image_width": "full",
+        "image_ratio": "adapt",
+        "columns_desktop": 3,
+        "column_alignment": "center",
+        "background_style": "primary",
+        "button_label": "",
+        "button_link": "",
+        "color_scheme": "",
+        "columns_mobile": "1",
+        "swipe_on_mobile": false,
+        "padding_top": 40,
+        "padding_bottom": 60
+      }
+    }
+  },
+  "order": [
+    "hero",
+    "story",
+    "mission"
+  ]
+}
