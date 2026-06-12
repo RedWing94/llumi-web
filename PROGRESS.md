@@ -7,7 +7,7 @@
 - [x] About Us page template (hero + story + mission)
 
 ## In Progress
-- [x] **Task A: Quiz Funnel** — Custom "Find your ritual" quiz page (page.quiz.liquid). Interactive, no app, recommends the right Llumi product based on answers.
+- [x] **Task A: Quiz Funnel** — Custom "Find your ritual" quiz page. 3 questions, personalized product recommendation, no app. Live at /pages/find-your-ritual.
 - [ ] **Task B: Structured Data (JSON-LD)** — Product schema markup (price, availability, reviews, ingredients) for Google rich results + AI crawlers.
 - [ ] **Task C: FAQ Schema** — Add FAQ structured data to product pages from collapsible accordion content, boosting search visibility.
 - [ ] **Task D: LLM-Optimized Content** — Semantic HTML, machine-readable product metadata, clean heading hierarchy for AI assistant discoverability.
