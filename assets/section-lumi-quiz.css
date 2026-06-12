@@ -89,18 +89,18 @@
 
 .lumi-quiz__option-title {
   display: block;
-  font-size: 1.1rem;
+  font-size: 3rem;
   font-weight: 600;
   color: #1A1A1A;
-  margin-bottom: 0.25rem;
+  margin-bottom: 0.35rem;
 }
 
 .lumi-quiz__option-desc {
   display: block;
-  font-size: 0.9rem;
+  font-size: 2.5rem;
   color: #1A1A1A;
   opacity: 0.65;
-  line-height: 1.4;
+  line-height: 1.5;
 }
 
 .lumi-quiz__btn {
@@ -161,7 +161,7 @@
 
 .lumi-quiz__result-name {
   font-family: 'Playfair Display', serif;
-  font-size: 1.6rem;
+  font-size: 2.2rem;
   font-weight: 600;
   color: #1A1A1A;
   margin: 0;
@@ -169,7 +169,7 @@
 
 .lumi-quiz__result-desc {
   font-family: 'DM Sans', sans-serif;
-  font-size: 1rem;
+  font-size: 1.25rem;
   color: #1A1A1A;
   opacity: 0.75;
   line-height: 1.6;
