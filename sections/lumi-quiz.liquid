@@ -1,0 +1,210 @@
+{{ 'section-lumi-quiz.css' | asset_url | stylesheet_tag }}
+
+<div class="lumi-quiz page-width">
+  {%- comment -%} Intro screen {%- endcomment -%}
+  <div class="lumi-quiz__screen lumi-quiz__screen--active" data-screen="intro">
+    <h1 class="lumi-quiz__title">Find Your Ritual</h1>
+    <p class="lumi-quiz__subtitle">Answer a few quick questions and we'll recommend the perfect Llumi product for your daily wellness routine.</p>
+    <button class="lumi-quiz__btn lumi-quiz__btn--primary" data-next="q1">Let's Go</button>
+  </div>
+
+  {%- comment -%} Q1: What's your primary wellness goal? {%- endcomment -%}
+  <div class="lumi-quiz__screen" data-screen="q1">
+    <p class="lumi-quiz__step">Question 1 of 3</p>
+    <h2 class="lumi-quiz__question">What's your primary wellness goal?</h2>
+    <div class="lumi-quiz__options">
+      <button class="lumi-quiz__option" data-answer="hydration" data-next="q2">
+        <span class="lumi-quiz__option-title">Stay Hydrated</span>
+        <span class="lumi-quiz__option-desc">Replenish electrolytes and feel refreshed throughout the day</span>
+      </button>
+      <button class="lumi-quiz__option" data-answer="recovery" data-next="q2">
+        <span class="lumi-quiz__option-title">Restore &amp; Recover</span>
+        <span class="lumi-quiz__option-desc">Support your body's natural recovery after a long day</span>
+      </button>
+      <button class="lumi-quiz__option" data-answer="energy" data-next="q2">
+        <span class="lumi-quiz__option-title">Clean Energy</span>
+        <span class="lumi-quiz__option-desc">A natural boost to start your morning ritual</span>
+      </button>
+      <button class="lumi-quiz__option" data-answer="overall" data-next="q2">
+        <span class="lumi-quiz__option-title">Overall Wellness</span>
+        <span class="lumi-quiz__option-desc">I want a little bit of everything</span>
+      </button>
+    </div>
+  </div>
+
+  {%- comment -%} Q2: When do you usually reach for a wellness drink? {%- endcomment -%}
+  <div class="lumi-quiz__screen" data-screen="q2">
+    <p class="lumi-quiz__step">Question 2 of 3</p>
+    <h2 class="lumi-quiz__question">When do you usually reach for a wellness drink?</h2>
+    <div class="lumi-quiz__options">
+      <button class="lumi-quiz__option" data-answer="morning" data-next="q3">
+        <span class="lumi-quiz__option-title">Morning</span>
+        <span class="lumi-quiz__option-desc">As part of my wake-up ritual</span>
+      </button>
+      <button class="lumi-quiz__option" data-answer="midday" data-next="q3">
+        <span class="lumi-quiz__option-title">Midday</span>
+        <span class="lumi-quiz__option-desc">An afternoon pick-me-up</span>
+      </button>
+      <button class="lumi-quiz__option" data-answer="evening" data-next="q3">
+        <span class="lumi-quiz__option-title">Evening</span>
+        <span class="lumi-quiz__option-desc">Winding down and restoring</span>
+      </button>
+      <button class="lumi-quiz__option" data-answer="anytime" data-next="q3">
+        <span class="lumi-quiz__option-title">Anytime</span>
+        <span class="lumi-quiz__option-desc">Whenever I need it</span>
+      </button>
+    </div>
+  </div>
+
+  {%- comment -%} Q3: What flavors do you gravitate toward? {%- endcomment -%}
+  <div class="lumi-quiz__screen" data-screen="q3">
+    <p class="lumi-quiz__step">Question 3 of 3</p>
+    <h2 class="lumi-quiz__question">What flavors do you gravitate toward?</h2>
+    <div class="lumi-quiz__options">
+      <button class="lumi-quiz__option" data-answer="tropical" data-next="result">
+        <span class="lumi-quiz__option-title">Tropical &amp; Fruity</span>
+        <span class="lumi-quiz__option-desc">Passion fruit, mango, citrus</span>
+      </button>
+      <button class="lumi-quiz__option" data-answer="citrus" data-next="result">
+        <span class="lumi-quiz__option-title">Light &amp; Citrusy</span>
+        <span class="lumi-quiz__option-desc">Lemonade, lemon-lime, clean finish</span>
+      </button>
+      <button class="lumi-quiz__option" data-answer="neutral" data-next="result">
+        <span class="lumi-quiz__option-title">Mild &amp; Subtle</span>
+        <span class="lumi-quiz__option-desc">Not too sweet, easy to drink daily</span>
+      </button>
+      <button class="lumi-quiz__option" data-answer="surprise" data-next="result">
+        <span class="lumi-quiz__option-title">Surprise Me</span>
+        <span class="lumi-quiz__option-desc">I'm open to anything</span>
+      </button>
+    </div>
+  </div>
+
+  {%- comment -%} Results screen — populated by JS {%- endcomment -%}
+  <div class="lumi-quiz__screen" data-screen="result">
+    <p class="lumi-quiz__step">Your Recommendation</p>
+    <h2 class="lumi-quiz__question" id="lumi-quiz-result-title">We found your match.</h2>
+    <div class="lumi-quiz__result" id="lumi-quiz-result">
+      <div class="lumi-quiz__result-card" id="lumi-quiz-result-card">
+        <div class="lumi-quiz__result-info">
+          <h3 class="lumi-quiz__result-name" id="lumi-quiz-result-name"></h3>
+          <p class="lumi-quiz__result-desc" id="lumi-quiz-result-desc"></p>
+          <a class="lumi-quiz__btn lumi-quiz__btn--primary" id="lumi-quiz-result-link" href="#">Shop Now</a>
+        </div>
+      </div>
+    </div>
+    <button class="lumi-quiz__btn lumi-quiz__btn--secondary" data-next="intro" id="lumi-quiz-retake">Retake Quiz</button>
+  </div>
+</div>
+
+<script>
+  (function() {
+    var answers = {};
+    var quiz = document.querySelector('.lumi-quiz');
+
+    var products = {
+      'hydrate-passion-fruit': {
+        name: 'Llumi Hydrate — Passion Fruit',
+        desc: 'A tropical electrolyte blend with B-vitamins. Sugar-free, caffeine-free, and perfect for daily hydration.',
+        url: '/products/llumi-hydrate-passion-fruit'
+      },
+      'hydrate-lemonade': {
+        name: 'Llumi Hydrate — Lemonade',
+        desc: 'A crisp, citrusy electrolyte blend with B-vitamins. Sugar-free, caffeine-free hydration that fits any ritual.',
+        url: '/products/llumi-hydrate-lemonade'
+      },
+      'hydrate-peach-mango': {
+        name: 'Llumi Hydrate — Peach Mango',
+        desc: 'A bright, fruity electrolyte blend with B-vitamins. Sugar-free, caffeine-free, deliciously smooth.',
+        url: '/products/llumi-hydrate-peach-mango'
+      },
+      'restore': {
+        name: 'Llumi Restore',
+        desc: 'Support your body\'s natural recovery with a clean blend designed for evening restoration.',
+        url: '/products/llumi-restore'
+      },
+      'rise': {
+        name: 'Llumi Rise',
+        desc: 'A clean energy boost to power your morning ritual — no crash, no jitters.',
+        url: '/products/llumi-rise'
+      }
+    };
+
+    function showScreen(id) {
+      var screens = quiz.querySelectorAll('.lumi-quiz__screen');
+      for (var i = 0; i < screens.length; i++) {
+        screens[i].classList.remove('lumi-quiz__screen--active');
+      }
+      var target = quiz.querySelector('[data-screen="' + id + '"]');
+      if (target) {
+        target.classList.add('lumi-quiz__screen--active');
+        target.scrollIntoView({ behavior: 'smooth', block: 'start' });
+      }
+    }
+
+    function getRecommendation() {
+      var goal = answers.q1;
+      var time = answers.q2;
+      var flavor = answers.q3;
+
+      if (goal === 'energy') return products['rise'];
+      if (goal === 'recovery') return products['restore'];
+
+      if (goal === 'hydration' || goal === 'overall') {
+        if (flavor === 'tropical') return products['hydrate-passion-fruit'];
+        if (flavor === 'citrus') return products['hydrate-lemonade'];
+        if (flavor === 'neutral') return products['hydrate-peach-mango'];
+
+        if (time === 'morning') return products['hydrate-lemonade'];
+        if (time === 'midday') return products['hydrate-passion-fruit'];
+        if (time === 'evening') return products['restore'];
+        return products['hydrate-peach-mango'];
+      }
+
+      return products['hydrate-passion-fruit'];
+    }
+
+    function showResult() {
+      var rec = getRecommendation();
+      document.getElementById('lumi-quiz-result-name').textContent = rec.name;
+      document.getElementById('lumi-quiz-result-desc').textContent = rec.desc;
+      document.getElementById('lumi-quiz-result-link').href = rec.url;
+      showScreen('result');
+    }
+
+    quiz.addEventListener('click', function(e) {
+      var btn = e.target.closest('[data-next]');
+      if (!btn) return;
+
+      var answer = btn.getAttribute('data-answer');
+      var next = btn.getAttribute('data-next');
+      var screen = btn.closest('.lumi-quiz__screen');
+      var screenId = screen ? screen.getAttribute('data-screen') : null;
+
+      if (answer && screenId) {
+        answers[screenId] = answer;
+      }
+
+      if (next === 'result') {
+        showResult();
+      } else if (next === 'intro') {
+        answers = {};
+        showScreen('intro');
+      } else {
+        showScreen(next);
+      }
+    });
+  })();
+</script>
+
+{% schema %}
+{
+  "name": "Llumi Quiz",
+  "settings": [],
+  "presets": [
+    {
+      "name": "Llumi Quiz"
+    }
+  ]
+}
+{% endschema %}
