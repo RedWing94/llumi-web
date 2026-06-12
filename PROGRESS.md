@@ -14,6 +14,9 @@
 - [x] **Task E: Page Speed Audit** — Audited: JS deferred, images lazy-loaded, fonts preloaded, only 1 app. Theme is well-optimized out of the box. Keep app count low.
 - [x] **Task F: Blog Template** — Enhanced article template with featured image, branded CTA section (links to quiz + shop), and related products grid below every post. All editable in the theme editor.
 
+## In Progress
+- [x] **Task G: Analytics Setup** - GTM (GTM-TJ5GDDST) installed in theme.liquid + Custom Pixel for checkout. GA4 (G-L18S8K1DSF) configured as tag inside GTM. Realtime data confirmed.
+
 ## Backlog (Requires Apps / Owner Action)
 - [ ] Subscription app setup (free tier — Seal Subscriptions or Propel per Supliful)
 - [ ] Klaviyo email/SMS flows (owners investigating)
