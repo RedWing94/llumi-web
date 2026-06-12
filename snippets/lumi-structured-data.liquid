@@ -1,0 +1,139 @@
+{%- comment -%}
+  Enhanced structured data for Llumi product pages.
+  Supplements Shopify's native {{ product | structured_data }} with
+  brand details, ingredients, usage instructions, and breadcrumbs.
+  Optimized for Google Rich Results + AI assistant visibility (ChatGPT, Perplexity, Google AI Overviews).
+{%- endcomment -%}
+
+{%- comment -%} ── Enhanced Product Schema ── {%- endcomment -%}
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "Product",
+  "name": {{ product.title | json }},
+  "description": {{ product.description | strip_html | truncate: 5000 | json }},
+  "url": {{ request.origin | append: product.url | json }},
+  "brand": {
+    "@type": "Brand",
+    "name": "Llumi"
+  },
+  "category": "Health & Beauty > Health Care > Fitness & Nutrition > Vitamins & Supplements",
+  "audience": {
+    "@type": "PeopleAudience",
+    "suggestedGender": "female",
+    "audienceType": "Women interested in clean wellness and daily supplement rituals"
+  },
+  {%- if product.featured_image -%}
+  "image": [
+    {%- for image in product.images -%}
+      {{ image | image_url: width: 1200 | prepend: "https:" | json }}{% unless forloop.last %},{% endunless %}
+    {%- endfor -%}
+  ],
+  {%- endif -%}
+  "sku": {{ product.selected_or_first_available_variant.sku | json }},
+  {%- if product.selected_or_first_available_variant.barcode != blank -%}
+  "gtin": {{ product.selected_or_first_available_variant.barcode | json }},
+  {%- endif -%}
+  "offers": {
+    "@type": "Offer",
+    "url": {{ request.origin | append: product.url | json }},
+    "priceCurrency": {{ cart.currency.iso_code | json }},
+    "price": {{ product.selected_or_first_available_variant.price | money_without_currency | remove: ',' | json }},
+    "availability": "https://schema.org/{% if product.available %}InStock{% else %}OutOfStock{% endif %}",
+    "seller": {
+      "@type": "Organization",
+      "name": "Llumi"
+    },
+    "shippingDetails": {
+      "@type": "OfferShippingDetails",
+      "shippingDestination": {
+        "@type": "DefinedRegion",
+        "addressCountry": "US"
+      }
+    },
+    "hasMerchantReturnPolicy": {
+      "@type": "MerchantReturnPolicy",
+      "applicableCountry": "US",
+      "returnPolicyCategory": "https://schema.org/MerchantReturnFiniteReturnWindow",
+      "merchantReturnDays": 30,
+      "returnMethod": "https://schema.org/ReturnByMail"
+    }
+  }
+  {%- if product.metafields.custom.ingredients != blank -%}
+  ,"additionalProperty": [
+    {
+      "@type": "PropertyValue",
+      "name": "Ingredients",
+      "value": {{ product.metafields.custom.ingredients | metafield_tag | strip_html | strip | json }}
+    }
+    {%- if product.metafields.custom.how_to_use != blank -%}
+    ,{
+      "@type": "PropertyValue",
+      "name": "Directions",
+      "value": {{ product.metafields.custom.how_to_use | metafield_tag | strip_html | strip | json }}
+    }
+    {%- endif -%}
+    {%- if product.metafields.custom.warnings != blank -%}
+    ,{
+      "@type": "PropertyValue",
+      "name": "Warnings",
+      "value": {{ product.metafields.custom.warnings | metafield_tag | strip_html | strip | json }}
+    }
+    {%- endif -%}
+  ]
+  {%- endif -%}
+  {%- if product.tags.size > 0 -%}
+  ,"keywords": {{ product.tags | join: ', ' | json }}
+  {%- endif -%}
+}
+</script>
+
+{%- comment -%} ── BreadcrumbList Schema ── {%- endcomment -%}
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "BreadcrumbList",
+  "itemListElement": [
+    {
+      "@type": "ListItem",
+      "position": 1,
+      "name": "Home",
+      "item": {{ request.origin | json }}
+    }
+    {%- if product.collections.size > 0 -%}
+    ,{
+      "@type": "ListItem",
+      "position": 2,
+      "name": {{ product.collections.first.title | json }},
+      "item": {{ request.origin | append: product.collections.first.url | json }}
+    }
+    ,{
+      "@type": "ListItem",
+      "position": 3,
+      "name": {{ product.title | json }},
+      "item": {{ request.origin | append: product.url | json }}
+    }
+    {%- else -%}
+    ,{
+      "@type": "ListItem",
+      "position": 2,
+      "name": {{ product.title | json }},
+      "item": {{ request.origin | append: product.url | json }}
+    }
+    {%- endif -%}
+  ]
+}
+</script>
+
+{%- comment -%} ── Supplement-specific content block for AI crawlers ── {%- endcomment -%}
+<div class="lumi-ai-content" style="display:none" aria-hidden="true" itemscope itemtype="https://schema.org/Product">
+  <meta itemprop="name" content="{{ product.title | escape }}">
+  <meta itemprop="brand" content="Llumi">
+  <meta itemprop="description" content="{{ product.description | strip_html | truncate: 5000 | escape }}">
+  {%- if product.metafields.custom.ingredients != blank -%}
+    <meta itemprop="additionalProperty" content="Ingredients: {{ product.metafields.custom.ingredients | metafield_tag | strip_html | strip | escape }}">
+  {%- endif -%}
+  {%- if product.metafields.custom.how_to_use != blank -%}
+    <meta itemprop="additionalProperty" content="How to Use: {{ product.metafields.custom.how_to_use | metafield_tag | strip_html | strip | escape }}">
+  {%- endif -%}
+</div>

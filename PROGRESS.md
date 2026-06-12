@@ -8,8 +8,8 @@
 
 ## In Progress
 - [x] **Task A: Quiz Funnel** — Custom "Find your ritual" quiz page. 3 questions, personalized product recommendation, no app. Live at /pages/find-your-ritual.
-- [ ] **Task B: Structured Data (JSON-LD)** — Product schema markup (price, availability, reviews, ingredients) for Google rich results + AI crawlers.
-- [ ] **Task C: FAQ Schema** — Add FAQ structured data to product pages from collapsible accordion content, boosting search visibility.
+- [x] **Task B: Structured Data (JSON-LD)** — Enhanced Product schema (brand, audience, ingredients, directions, warnings from metafields), BreadcrumbList, shipping/returns policy, AI-readable meta content. Supplements Shopify's native schema.
+- [x] ~~**Task C: FAQ Schema**~~ — Skipped. Google deprecated FAQ rich results May 2026.
 - [ ] **Task D: LLM-Optimized Content** — Semantic HTML, machine-readable product metadata, clean heading hierarchy for AI assistant discoverability.
 - [ ] **Task E: Page Speed Audit** — Audit theme, lazy-load images, defer non-critical JS, minimize render-blocking resources.
 - [ ] **Task F: Blog Template** — SEO-optimized blog post template ready for content marketing.

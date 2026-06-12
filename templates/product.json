@@ -69,6 +69,12 @@
             "custom_liquid": "{% render 'lumi-collapsibles' %}"
           }
         },
+        "lumi_structured_data": {
+          "type": "custom_liquid",
+          "settings": {
+            "custom_liquid": "{% render 'lumi-structured-data' %}"
+          }
+        },
         "share": {
           "type": "share",
           "settings": {
@@ -88,6 +94,7 @@
         "buy_buttons",
         "description",
         "lumi_collapsibles",
+        "lumi_structured_data",
         "share"
       ],
       "settings": {
