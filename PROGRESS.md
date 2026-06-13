@@ -14,11 +14,10 @@
 - [x] **Task E: Page Speed Audit** — Audited: JS deferred, images lazy-loaded, fonts preloaded, only 1 app. Theme is well-optimized out of the box. Keep app count low.
 - [x] **Task F: Blog Template** — Enhanced article template with featured image, branded CTA section (links to quiz + shop), and related products grid below every post. All editable in the theme editor.
 
-## In Progress
-- [ ] **Task G: Analytics Setup** — Switched to native Shopify app approach. Removed manual GTM code from theme.liquid and deleted lumi-datalayer.liquid snippet. Next: install Google & YouTube app (handles GA4 + Google Ads automatically), install Facebook & Instagram app (handles Meta Pixel + Conversions API). GTM container (GTM-TJ5GDDST) kept alive but unused for now. Also need to delete the Custom Pixel in Shopify admin.
+- [x] **Task G: Analytics Setup** — Using native Google & YouTube app (GA4 G-L18S8K1DSF + Google Merchant Center connected, ecommerce events tracked automatically). Removed manual GTM code from theme. Custom Pixel deleted. GTM container (GTM-TJ5GDDST) kept alive but unused. Meta Pixel via Facebook & Instagram app when ready.
 
 ## Backlog (Requires Apps / Owner Action)
-- [ ] Subscription app setup (free tier — Seal Subscriptions or Propel per Supliful)
+- [ ] Subscription app setup (Seal Subscriptions free tier — up to 150 subs, 0% fees, subscribe-and-save discount)
 - [ ] Klaviyo email/SMS flows (owners investigating)
 - [ ] Post-purchase cross-sell (custom thank-you section or AfterSell free tier)
 - [ ] Judge.me photo/video reviews + review request automation
