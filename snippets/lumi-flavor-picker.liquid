@@ -1,11 +1,11 @@
 {%- comment -%}
-  Lumi "Choose your flavor" cross-link for Hydrate products.
-  Only renders when the current product has the "hydrate" tag.
-  Dynamically loops all products sharing the "hydrate" tag
-  in the same collection, highlighting the current one.
+  Lumi product picker for cross-linking related products.
+  - Hydration products (tag "Hydration"): flavor pills only
+  - Protein products (tag "Protein"): type row (Whey / Plant) + flavor pills
+  - Pre-workout / energy products (product type "Pre-Workout Supplements"): flavor pills only
 {%- endcomment -%}
 
-{%- if product.tags contains 'Hydration' -%}
+{%- if product.tags contains 'Hydration' or product.tags contains 'Protein' or product.type == 'Pre-Workout Supplements' -%}
 
 <style>
   .lumi-flavor-picker {
@@ -54,8 +54,14 @@
     font-weight: 600;
     pointer-events: none;
   }
+
+  .lumi-flavor-picker__row + .lumi-flavor-picker__row {
+    margin-top: 0.75rem;
+  }
 </style>
 
+{%- if product.tags contains 'Hydration' -%}
+{%- comment -%} ── Hydration: flavor only ── {%- endcomment -%}
 <div class="lumi-flavor-picker">
   <span class="lumi-flavor-picker__label">Choose your flavor</span>
   <div class="lumi-flavor-picker__options">
@@ -66,7 +72,6 @@
           {%- assign is_current = true -%}
         {%- endif -%}
 
-        {%- comment -%} Strip brand prefix to get just the flavor name {%- endcomment -%}
         {%- assign flavor_name = col_product.title | remove: 'Llumi Hydrate ' | remove: 'Lumi Hydrate ' | remove: 'LLUMI Hydrate ' | remove: '(' | remove: ')' | strip -%}
 
         <a
@@ -80,5 +85,120 @@
     {%- endfor -%}
   </div>
 </div>
+{%- endif -%}
+
+{%- if product.type == 'Pre-Workout Supplements' -%}
+{%- comment -%} ── Pre-workout / energy: flavor only ── {%- endcomment -%}
+<div class="lumi-flavor-picker">
+  <span class="lumi-flavor-picker__label">Choose your flavor</span>
+  <div class="lumi-flavor-picker__options">
+    {%- for col_product in collections.all.products -%}
+      {%- if col_product.type == 'Pre-Workout Supplements' -%}
+        {%- assign is_current = false -%}
+        {%- if col_product.handle == product.handle -%}
+          {%- assign is_current = true -%}
+        {%- endif -%}
+
+        {%- assign flavor_name = col_product.title
+          | remove: 'Llumi Pre-Workout'
+          | remove: 'LLUMI Pre-Workout'
+          | remove: 'Llumi Pre Workout'
+          | remove: 'Flavor'
+          | remove: '(' | remove: ')'
+          | strip -%}
+
+        <a
+          href="{{ col_product.url }}"
+          class="lumi-flavor-picker__pill{% if is_current %} lumi-flavor-picker__pill--active{% endif %}"
+          {% if is_current %}aria-current="true"{% endif %}
+        >
+          {{- flavor_name -}}
+        </a>
+      {%- endif -%}
+    {%- endfor -%}
+  </div>
+</div>
+{%- endif -%}
+
+{%- if product.tags contains 'Protein' -%}
+{%- comment -%} ── Protein: type row + flavor row ── {%- endcomment -%}
+
+{%- assign current_is_whey = false -%}
+{%- assign current_is_plant = false -%}
+{%- if product.tags contains 'Whey' -%}
+  {%- assign current_is_whey = true -%}
+{%- endif -%}
+{%- if product.tags contains 'Plant' -%}
+  {%- assign current_is_plant = true -%}
+{%- endif -%}
+
+{%- comment -%} Find the first product of each type to link the inactive type pill {%- endcomment -%}
+{%- assign first_whey_url = '' -%}
+{%- assign first_plant_url = '' -%}
+{%- for col_product in collections.all.products -%}
+  {%- if col_product.tags contains 'Protein' and col_product.tags contains 'Whey' and first_whey_url == '' -%}
+    {%- assign first_whey_url = col_product.url -%}
+  {%- endif -%}
+  {%- if col_product.tags contains 'Protein' and col_product.tags contains 'Plant' and first_plant_url == '' -%}
+    {%- assign first_plant_url = col_product.url -%}
+  {%- endif -%}
+{%- endfor -%}
+
+<div class="lumi-flavor-picker">
+  <div class="lumi-flavor-picker__row">
+    <span class="lumi-flavor-picker__label">Protein type</span>
+    <div class="lumi-flavor-picker__options">
+      <a
+        href="{{ first_whey_url }}"
+        class="lumi-flavor-picker__pill{% if current_is_whey %} lumi-flavor-picker__pill--active{% endif %}"
+        {% if current_is_whey %}aria-current="true"{% endif %}
+      >
+        100% Whey
+      </a>
+      <a
+        href="{{ first_plant_url }}"
+        class="lumi-flavor-picker__pill{% if current_is_plant %} lumi-flavor-picker__pill--active{% endif %}"
+        {% if current_is_plant %}aria-current="true"{% endif %}
+      >
+        Plant Based
+      </a>
+    </div>
+  </div>
+
+  <div class="lumi-flavor-picker__row">
+    <span class="lumi-flavor-picker__label">Choose your flavor</span>
+    <div class="lumi-flavor-picker__options">
+      {%- assign current_type_tag = '' -%}
+      {%- if current_is_whey -%}{%- assign current_type_tag = 'Whey' -%}{%- endif -%}
+      {%- if current_is_plant -%}{%- assign current_type_tag = 'Plant' -%}{%- endif -%}
+
+      {%- for col_product in collections.all.products -%}
+        {%- if col_product.tags contains 'Protein' and col_product.tags contains current_type_tag -%}
+          {%- assign is_current = false -%}
+          {%- if col_product.handle == product.handle -%}
+            {%- assign is_current = true -%}
+          {%- endif -%}
+
+          {%- assign flavor_name = col_product.title
+            | remove: 'Advanced 100% Whey Protein Isolate '
+            | remove: 'Plant Protein '
+            | remove: 'Llumi '
+            | remove: 'LLUMI '
+            | remove: '(' | remove: ')'
+            | strip -%}
+
+          <a
+            href="{{ col_product.url }}"
+            class="lumi-flavor-picker__pill{% if is_current %} lumi-flavor-picker__pill--active{% endif %}"
+            {% if is_current %}aria-current="true"{% endif %}
+          >
+            {{- flavor_name -}}
+          </a>
+        {%- endif -%}
+      {%- endfor -%}
+    </div>
+  </div>
+</div>
+{%- endif -%}
 
 {%- endif -%}
